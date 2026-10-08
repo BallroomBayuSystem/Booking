@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#EFECE5">
+  <meta name="description" content="Wedding Booking System for The Ballroom & The Bayu">
+  <title>The Ballroom &amp; The Bayu — Wedding Booking System</title>
+
+  <!-- Fonts & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDM-W1hux31vLHpGsopYV5WRT-9FDb7kyk",
+      authDomain: "ballroombayusystem.firebaseapp.com",
+      projectId: "ballroombayusystem",
+      storageBucket: "ballroombayusystem.firebasestorage.app",
+      messagingSenderId: "900964132462",
+      appId: "1:900964132462:web:7c43a39dfa6afa682c9e57"
+    };
+    firebase.initializeApp(firebaseConfig);
+    window.db = firebase.firestore();
+  </script>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <h1 class="brand-name">The Ballroom &amp; The Bayu</h1>
+        <div class="brand-tag">Wedding booking system</div>
+      </div>
+      <div class="topbar-right" id="topbarRight"></div>
+    </div>
+  </header>
+
+  <!-- Banner for Firebase / Rule Errors -->
+  <div id="bannerZone"></div>
+
+  <!-- Tab Navigation -->
+  <nav class="tabbar-wrap" aria-label="Main Navigation">
+    <div class="tabbar" id="tabbar"></div>
+  </nav>
+
+  <!-- Main Dynamic View Container -->
+  <main id="mainView" class="main-view"></main>
+
+  <!-- Generic Dynamic Modal Overlay -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <!-- Sign In Modal Overlay -->
+  <div class="modal-overlay" id="signInOverlay" aria-hidden="true">
+    <div class="modal signin-card" role="dialog" aria-modal="true" aria-labelledby="signInTitle">
+      <div class="modal-head">
+        <div>
+          <div class="modal-title" id="signInTitle">Selamat datang</div>
+          <div class="modal-sub">Sign in with your name to continue</div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="helper-text">
+          This browser doesn't recognize you yet. Staff can only edit bookings they create — admins can edit everything.
+        </p>
+        <form id="signInForm">
+          <div class="field">
+            <label class="field-label" for="signInName">Nama anda / Your name</label>
+            <input type="text" id="signInName" required autocomplete="name" placeholder>
+          </div>
+          <button type="submit" class="btn btn-gold btn-block" style="margin-top:14px;">Teruskan</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toasts" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Application Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
